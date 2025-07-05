@@ -14,6 +14,9 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  // Customização do nome e logo
+  const nome = localStorage.getItem('sistema_nome') || 'ContaForm';
+  const logo = localStorage.getItem('sistema_logo') || '';
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -60,13 +63,17 @@ export default function Login() {
     <div className="login-bg">
       <div className="login-container">
         <div className="login-card">
-          <div className="login-logo">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="48" height="48" rx="12" fill="#4285F4"/>
-              <text x="50%" y="55%" textAnchor="middle" fill="#fff" fontSize="22" fontWeight="bold" dy=".3em">CF</text>
-            </svg>
+          <div className="login-logo" style={{marginBottom: 10}}>
+            {logo ? (
+              <img src={logo} alt="Logo" style={{height:48,marginRight:10,borderRadius:8}} />
+            ) : (
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#4285F4"/>
+                <text x="50%" y="55%" textAnchor="middle" fill="#fff" fontSize="22" fontWeight="bold" dy=".3em">CF</text>
+              </svg>
+            )}
           </div>
-          <h2>Bem-vindo ao ContaForm</h2>
+          <h2 style={{margin:0, marginBottom: 12}}>{nome}</h2>
           <form onSubmit={handleLogin} className="login-form">
             <input
               type="email"

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { db } from './firebase';
-import { auth } from './firebaseAuth';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 function getToday() {
   const today = new Date();
@@ -11,6 +12,7 @@ function getToday() {
 }
 
 function App() {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({ material: '', quantidade: '', valor: '', data: getToday() });
   const [editIndex, setEditIndex] = useState(null);
@@ -30,11 +32,15 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u);
+      if (!u) {
+        navigate('/login');
+      }
     });
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -87,7 +93,9 @@ function App() {
   };
 
   const handleLogout = async () => {
+    const auth = getAuth();
     await signOut(auth);
+    navigate('/login');
   };
 
   // Corrigido: soma apenas os valores, não multiplica pela quantidade
