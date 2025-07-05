@@ -137,7 +137,7 @@ function App() {
             if (match) {
               setForm({ ...form, data: `${match[3]}-${match[2]}-${match[1]}` });
             } else {
-              setForm({ ...form, data: val });
+              setForm({ ...form, data: val }); 
             }
           }}
           className="date-input"
