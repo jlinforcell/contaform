@@ -1,0 +1,101 @@
+.login-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #4285F4 0%, #6dd5ed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(66,133,244,0.15);
+  padding: 40px 32px 32px 32px;
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.7s;
+}
+.login-logo {
+  margin-bottom: 16px;
+}
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.login-input {
+  padding: 10px 14px;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.login-input:focus {
+  border: 1.5px solid #4285F4;
+}
+.login-btn {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.login-btn.primary {
+  background: #4285F4;
+  color: #fff;
+}
+.login-btn.primary:hover {
+  background: #3367d6;
+}
+.login-btn.secondary {
+  background: #f1f3f4;
+  color: #222;
+}
+.login-btn.secondary:hover {
+  background: #e0e0e0;
+}
+.login-btn.google {
+  background: #fff;
+  color: #222;
+  border: 1px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.login-btn.google:hover {
+  background: #f5f5f5;
+}
+.google-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg') no-repeat center/contain;
+  margin-right: 6px;
+}
+.login-error {
+  color: #e74c3c;
+  margin-top: 10px;
+  font-size: 0.98rem;
+  text-align: center;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
